@@ -32,7 +32,8 @@
 		<tr th:each="cultura : ${culturas}">
 			
 			<td><a th:href="${(#mvc.url('CC#detalhesCultura').arg(0, cultura.culturaId)).build()}"><span th:text="${cultura.nome}"></span></a></td>
-			<td><span th:text="${cultura.dataCadastro}"></span></td>	
+			<td><span th:text="${cultura.dataCadastro}"></span></td>
+			<td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('CC#deletarCultura').arg(0, cultura.culturaId)).build()}"><i class="material-icons left">delete</i></a></td>	
 		</tr>
 	</tbody>
 </table>

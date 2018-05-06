@@ -5,7 +5,7 @@ import java.sql.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,6 +31,7 @@ public class CulturaController {
 		Date data = new Date(System.currentTimeMillis());
 		cultura.setDataCadastro(data);
 		cr.save(cultura);
+		//attributes.addFlashAttribute("mensagem", "Salvo com Sucesso");
 		return "redirect:/cadastrarCultura";
 	}
 	@RequestMapping("/culturas")
@@ -47,16 +48,13 @@ public class CulturaController {
 		mv.addObject("cultura", cultura);
 		return mv;
 	}
-	
-	//nao ta fumegando
-	
-	@RequestMapping("/deletar/{culturaId}")
-	public ModelAndView deletarCultura(@PathVariable("culturaId") long culturaId )
+		
+	@RequestMapping("/deletarCultura")
+	public String deletarCultura( long culturaId )
 	{
 		Cultura cultura = cr.findByculturaId(culturaId);
-		ModelAndView mv = new ModelAndView("index");
 		cr.delete(cultura);
-		return mv;
+		return "redirect:/culturas";
 	}
 
 }
