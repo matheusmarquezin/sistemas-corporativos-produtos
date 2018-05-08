@@ -1,11 +1,13 @@
 package com.produtos.produtosapp.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -14,6 +16,10 @@ public class Produto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long produtoId;
+	
+	@OneToMany
+	List<Revisao> revisao;
+	
 	
 	@NotNull
 	private String nome;
@@ -59,6 +65,14 @@ public class Produto {
 	private Date dataModificacao;
 	
 	
+
+	public List<Revisao> getRevisao() {
+		return revisao;
+	}
+
+	public void setRevisao(List<Revisao> revisao) {
+		this.revisao = revisao;
+	}
 
 	public Produto() {
 		super();
