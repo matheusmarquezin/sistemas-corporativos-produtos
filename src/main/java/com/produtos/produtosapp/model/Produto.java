@@ -65,7 +65,7 @@ public class Produto {
 	private Date dataModificacao;
 	
 	
-
+	@OneToMany
 	public List<Revisao> getRevisao() {
 		return revisao;
 	}
