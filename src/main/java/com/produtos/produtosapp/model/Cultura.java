@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Cultura implements Serializable {
@@ -22,16 +23,16 @@ public class Cultura implements Serializable {
 	
 	private Date dataCadastro;
 	
-	@ManyToOne
-	private DescricaoCulturaProduto descricaoculturaproduto;
+	@OneToOne
+	private DescricaoCultura descricaoculturaproduto;
 
 	
 	
-	public DescricaoCulturaProduto getDescricaoculturaproduto() {
+	public DescricaoCultura getDescricaoculturaproduto() {
 		return descricaoculturaproduto;
 	}
 
-	public void setDescricaoculturaproduto(DescricaoCulturaProduto descricaoculturaproduto) {
+	public void setDescricaoculturaproduto(DescricaoCultura descricaoculturaproduto) {
 		this.descricaoculturaproduto = descricaoculturaproduto;
 	}
 
