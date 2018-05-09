@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+
+<!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Modulo Produtos Sistemas Corporativos</title>
+</head>
+<body>
+
+<h1>Modulo Produtos Sistemas Corporativos</h1>
+
+
+<h3><a href="/cadastrarCultura" class="waves-effect waves-light btn"><i class="material-icons left">cloud_upload</i>Cadastrar Cultura</a></h3>
+<table class="container">
+
+	<thead>
+	<tr>
+		<th> Nome </th>
+		<th> Data de Cadastro</th>	
+	</tr>
+	</thead>
+	<tbody>
+
+		<tr th:each="cultura : ${culturas}">
+			
+			<td><a th:href="${(#mvc.url('CC#detalhesCultura').arg(0, cultura.culturaId)).build()}"><span th:text="${cultura.nome}"></span></a></td>
+			<td><span th:text="${cultura.dataCadastro}"></span></td>
+			<td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('CC#deletarCultura').arg(0, cultura.culturaId)).build()}"><i class="material-icons left">delete</i></a></td>	
+		</tr>
+	</tbody>
+</table>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+
+</body>
+</html>

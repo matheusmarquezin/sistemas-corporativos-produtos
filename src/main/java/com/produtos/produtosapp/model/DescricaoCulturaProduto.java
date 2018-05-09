@@ -16,7 +16,7 @@ public class DescricaoCulturaProduto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long DescricaoCulturaProdutoId;
-	
+
 	private Date dataCadastro;
 	
 	@OneToMany

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+
+<!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Modulo Produtos Sistemas Corporativos</title>
+</head>
+<body>
+	<h1>Detalhes Cultura</h1>
+	<h3><a href="/culturas" class="waves-effect waves-light btn"><i class="material-icons left">dehaze</i>Lista Cultura</a></h3>
+	<div th:each="cultura : ${cultura}" class="container">
+		<div class="row">
+			<p>Nome : <span th:text="${cultura.nome}"></span></p>
+			<p>Data : <span th:text="${cultura.dataCadastro}"></span></p>
+		
+		</div>
+	
+	
+	</div>
+
+
+</body>
+
+</html>
