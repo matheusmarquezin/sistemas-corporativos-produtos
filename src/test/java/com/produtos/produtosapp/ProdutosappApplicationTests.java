@@ -20,7 +20,7 @@ public class ProdutosappApplicationTests {
 	@Autowired
 	private ProdutoRepository pr;
 	@Test
-	public void contextLoads() {
+	public void ProdutoCreate() {
 		
 		Produto produto = new Produto();
 		
@@ -46,12 +46,15 @@ public class ProdutosappApplicationTests {
 		produto.setDataNaoDisponivelVenda(data);
 		produto.setDataProdutoDescontinuado(data);
 		
-		pr.save(produto);
-		pr.flush();
+		pr.saveAndFlush(produto);
+		produto = pr.findByProdutoId(8);
+		produto.setCor("TESTE UPDATE hahahahahahahahah");
+		pr.saveAndFlush(produto);
 		
 		
 		for (Produto objeto : pr.findAll()) {
 			System.out.println( "\n" +
+					"Produto ID: " + objeto.getProdutoId() + "\n"+
 					"Nome: " + objeto.getNome() + "\n"+
 					"Numero do Produto  :" + objeto.getNumeroProduto()  + "\n"+
 					"Cor Produto : " + objeto.getCor() + "\n" +
@@ -73,6 +76,6 @@ public class ProdutosappApplicationTests {
 					"Data Modificação : " + objeto.getDataModificacao()+"\n");
 		}
 		
-	}
-
+		
+		}
 }
