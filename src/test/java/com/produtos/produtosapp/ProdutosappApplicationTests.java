@@ -48,7 +48,7 @@ public class ProdutosappApplicationTests {
 		
 		pr.saveAndFlush(produto);
 		produto = pr.findByProdutoId(8);
-		produto.setCor("TESTE UPDATE hahahahahahahahah");
+		produto.setCor("criolina do ceu");
 		pr.saveAndFlush(produto);
 		
 		
@@ -76,6 +76,8 @@ public class ProdutosappApplicationTests {
 					"Data Modificação : " + objeto.getDataModificacao()+"\n");
 		}
 		
+		Produto produtodelete = pr.findByProdutoId(4);
+		pr.delete(produtodelete);
 		
 		}
 }
