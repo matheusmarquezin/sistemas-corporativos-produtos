@@ -22,10 +22,10 @@ public class ProdutosappApplicationTests {
 	@Test
 	public void ProdutoCreate() {
 		
-		//create
 		Produto produto = new Produto();
 		
-		produto.setNome("First");
+		//criar
+		produto.setNome("Monark");
 		produto.setNumeroProduto("834384839483");
 		produto.setBandeira(true);
 		produto.setBandeiraAcabado(false);
@@ -48,11 +48,9 @@ public class ProdutosappApplicationTests {
 		produto.setDataProdutoDescontinuado(data);
 		
 		pr.saveAndFlush(produto);
-		produto = pr.findByProdutoId(8);
-		produto.setCor("criolina do ceu");
-		pr.saveAndFlush(produto);
-		//select
 		
+		
+		//listar
 		for (Produto objeto : pr.findAll()) {
 			System.out.println( "\n" +
 					"Produto ID: " + objeto.getProdutoId() + "\n"+
@@ -77,9 +75,14 @@ public class ProdutosappApplicationTests {
 					"Data Modificação : " + objeto.getDataModificacao()+"\n");
 		}
 		
-		//delete
-		Produto produtodelete = pr.findByProdutoId(4);
+		//deletar
+		Produto produtodelete = pr.findByProdutoId(7);
 		pr.delete(produtodelete);
+		
+		//alterar
+		produto = pr.findByProdutoId(8);
+		produto.setCor("azul");
+		pr.saveAndFlush(produto);
 		
 		}
 }
