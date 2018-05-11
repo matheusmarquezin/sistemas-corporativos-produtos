@@ -77,6 +77,7 @@ public class ProdutosappApplicationTests {
 					"Data Modificação : " + objeto.getDataModificacao()+"\n");
 		}
 		
+		//delete
 		Produto produtodelete = pr.findByProdutoId(4);
 		pr.delete(produtodelete);
 		
