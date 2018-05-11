@@ -22,6 +22,7 @@ public class ProdutosappApplicationTests {
 	@Test
 	public void ProdutoCreate() {
 		
+		//create
 		Produto produto = new Produto();
 		
 		produto.setNome("First");
@@ -50,7 +51,7 @@ public class ProdutosappApplicationTests {
 		produto = pr.findByProdutoId(8);
 		produto.setCor("criolina do ceu");
 		pr.saveAndFlush(produto);
-		
+		//select
 		
 		for (Produto objeto : pr.findAll()) {
 			System.out.println( "\n" +
@@ -76,6 +77,7 @@ public class ProdutosappApplicationTests {
 					"Data Modificação : " + objeto.getDataModificacao()+"\n");
 		}
 		
+		//delete
 		Produto produtodelete = pr.findByProdutoId(4);
 		pr.delete(produtodelete);
 		
