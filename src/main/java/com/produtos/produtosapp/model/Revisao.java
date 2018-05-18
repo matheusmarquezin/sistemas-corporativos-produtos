@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -29,9 +29,7 @@ public class Revisao {
 	
 	private String comentarios;
 	@NotNull
-	private Date dataModificacao;
-	
-	
+	private Date dataModificacao;	
 	
 	public Produto getProduto() {
 		return produto;
