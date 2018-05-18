@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
@@ -61,12 +61,43 @@ public class Produto {
 	@NotNull
 	private Date dataModificacao;
 	
-//	@ManyToMany
-//	private FotoRelacao fotoRelacao;
- 	
 	@OneToMany
-	List<Revisao> revisao;
+	private List<Fotos> fotos;
+ 	
+	@OneToMany	
+	private List<Revisao> revisao;
 	
+	@OneToMany
+	private List<ProdutoSubCategoria> produtoSubCategoria;
+	
+	@OneToMany
+	private List<Documento> documento;
+	
+	
+	public List<Documento> getDocumento() {
+		return documento;
+	}
+
+	public void setDocumento(List<Documento> documento) {
+		this.documento = documento;
+	}
+
+	public List<ProdutoSubCategoria> getProdutoSubCategoria() {
+		return produtoSubCategoria;
+	}
+
+	public void setProdutoSubCategoria(List<ProdutoSubCategoria> produtoSubCategoria) {
+		this.produtoSubCategoria = produtoSubCategoria;
+	}
+
+	public List<Fotos> getFotos() {
+		return fotos;
+	}
+
+	public void setFotos(List<Fotos> fotos) {
+		this.fotos = fotos;
+	}
+
 	@OneToMany
 	public List<Revisao> getRevisao() {
 		return revisao;
