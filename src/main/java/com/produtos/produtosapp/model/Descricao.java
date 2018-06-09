@@ -13,10 +13,7 @@ public class Descricao {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long DescricaoProdutoId;
-	
-	@ManyToOne
-	private DescricaoCultura descricaoculturaproduto;
+	private long DescricaoProdutoId;	
 
 	private String Descricao;
 	
@@ -30,13 +27,7 @@ public class Descricao {
 		DescricaoProdutoId = descricaoProdutoId;
 	}
 
-	public DescricaoCultura getDescricaoculturaproduto() {
-		return descricaoculturaproduto;
-	}
-
-	public void setDescricaoculturaproduto(DescricaoCultura descricaoculturaproduto) {
-		this.descricaoculturaproduto = descricaoculturaproduto;
-	}
+	
 
 	public String getDescricao() {
 		return Descricao;

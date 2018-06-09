@@ -15,7 +15,7 @@ public class Fotos {
 	
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	private long fotoId;
 	
 	private String imagemPequena;
