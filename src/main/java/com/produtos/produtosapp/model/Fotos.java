@@ -1,19 +1,27 @@
 package com.produtos.produtosapp.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Fotos {
+@Table(name = "fotos")
+public class Fotos implements Serializable {
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	private long fotoId;
@@ -25,27 +33,75 @@ public class Fotos {
 	private String imagemGrande;
 	
 	private String nomeImagemGrande;
+	
+	private boolean principal;
 	@NotNull
 	private Date dataModificacao;
 	
 	@ManyToOne
-	private Produto produto;
+    @JoinColumn
+	private Produto produto;	
 	
 
-	public Fotos() {
-		super();
-		dataModificacao = new Date();
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((dataModificacao == null) ? 0 : dataModificacao.hashCode());
+		result = prime * result + (int) (fotoId ^ (fotoId >>> 32));
+		result = prime * result + ((imagemGrande == null) ? 0 : imagemGrande.hashCode());
+		result = prime * result + ((imagemPequena == null) ? 0 : imagemPequena.hashCode());
+		result = prime * result + ((nomeImagemGrande == null) ? 0 : nomeImagemGrande.hashCode());
+		result = prime * result + ((nomeImagemPequena == null) ? 0 : nomeImagemPequena.hashCode());
+		result = prime * result + (principal ? 1231 : 1237);
+		result = prime * result + ((produto == null) ? 0 : produto.hashCode());
+		return result;
 	}
 
-	public Fotos(long fotoId, String imagenPequena, String nomeImagemPequena, String imagemGrande,
-			String nomeImagemGrande, Date dataModificacao) {
-		super();
-		this.fotoId = fotoId;
-		this.imagemPequena = imagenPequena;
-		this.nomeImagemPequena = nomeImagemPequena;
-		this.imagemGrande = imagemGrande;
-		this.nomeImagemGrande = nomeImagemGrande;
-		this.dataModificacao = dataModificacao;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Fotos other = (Fotos) obj;
+		if (dataModificacao == null) {
+			if (other.dataModificacao != null)
+				return false;
+		} else if (!dataModificacao.equals(other.dataModificacao))
+			return false;
+		if (fotoId != other.fotoId)
+			return false;
+		if (imagemGrande == null) {
+			if (other.imagemGrande != null)
+				return false;
+		} else if (!imagemGrande.equals(other.imagemGrande))
+			return false;
+		if (imagemPequena == null) {
+			if (other.imagemPequena != null)
+				return false;
+		} else if (!imagemPequena.equals(other.imagemPequena))
+			return false;
+		if (nomeImagemGrande == null) {
+			if (other.nomeImagemGrande != null)
+				return false;
+		} else if (!nomeImagemGrande.equals(other.nomeImagemGrande))
+			return false;
+		if (nomeImagemPequena == null) {
+			if (other.nomeImagemPequena != null)
+				return false;
+		} else if (!nomeImagemPequena.equals(other.nomeImagemPequena))
+			return false;
+		if (principal != other.principal)
+			return false;
+		if (produto == null) {
+			if (other.produto != null)
+				return false;
+		} else if (!produto.equals(other.produto))
+			return false;
+		return true;
 	}
 
 	public long getFotoId() {
@@ -56,12 +112,12 @@ public class Fotos {
 		this.fotoId = fotoId;
 	}
 
-	public String getImagenPequena() {
+	public String getImagemPequena() {
 		return imagemPequena;
 	}
 
-	public void setImagenPequena(String imagenPequena) {
-		this.imagemPequena = imagenPequena;
+	public void setImagemPequena(String imagemPequena) {
+		this.imagemPequena = imagemPequena;
 	}
 
 	public String getNomeImagemPequena() {
@@ -88,6 +144,14 @@ public class Fotos {
 		this.nomeImagemGrande = nomeImagemGrande;
 	}
 
+	public boolean isPrincipal() {
+		return principal;
+	}
+
+	public void setPrincipal(boolean principal) {
+		this.principal = principal;
+	}
+
 	public Date getDataModificacao() {
 		return dataModificacao;
 	}
@@ -95,5 +159,38 @@ public class Fotos {
 	public void setDataModificacao(Date dataModificacao) {
 		this.dataModificacao = dataModificacao;
 	}
-	
+
+	public Produto getProduto() {
+		return produto;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
+
+	public Fotos(long fotoId, String imagemPequena, String nomeImagemPequena, String imagemGrande,
+			String nomeImagemGrande, boolean principal, Date dataModificacao, Produto produto) {
+		super();
+		this.fotoId = fotoId;
+		this.imagemPequena = imagemPequena;
+		this.nomeImagemPequena = nomeImagemPequena;
+		this.imagemGrande = imagemGrande;
+		this.nomeImagemGrande = nomeImagemGrande;
+		this.principal = principal;
+		this.dataModificacao = dataModificacao;
+		this.produto = produto;
+	}
+
+	public Fotos() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Fotos [fotoId=" + fotoId + ", imagemPequena=" + imagemPequena + ", nomeImagemPequena="
+				+ nomeImagemPequena + ", imagemGrande=" + imagemGrande + ", nomeImagemGrande=" + nomeImagemGrande
+				+ ", principal=" + principal + ", dataModificacao=" + dataModificacao + ", produto=" + produto + "]";
+	}
+		
 }

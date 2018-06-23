@@ -1,15 +1,27 @@
 package com.produtos.produtosapp.model;
 
+import java.io.Serializable;
+
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Modelo {
+@Table(name = "modelo")
+public class Modelo implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	private long ModeloId;
@@ -22,28 +34,30 @@ public class Modelo {
 	private String Instrucao;
 	
 	@NotNull
-	private Date dataModificacao;
+	private Date dataModificacao;	
 	
+	//@OneToMany
+	private Produto protuto;
 	
-
-	public Modelo(long modeloId, String nome, String catalogoDescricao, String instrucao, Date dataModificacao) {
-		super();
-		ModeloId = modeloId;
-		Nome = nome;
-		CatalogoDescricao = catalogoDescricao;
-		Instrucao = instrucao;
-		this.dataModificacao = dataModificacao;
-	}
+	@OneToOne(cascade = CascadeType.ALL)
+	private Ilustracao ilustracoes;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Cultura cultura;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Descricao descricao;
 
 	public Modelo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 
 	public long getModeloId() {
 		return ModeloId;
 	}
-
 	public void setModeloId(long modeloId) {
 		ModeloId = modeloId;
 	}
@@ -79,6 +93,63 @@ public class Modelo {
 	public void setDataModificacao(Date dataModificacao) {
 		this.dataModificacao = dataModificacao;
 	}
-		
+
+	public Produto getProtuto() {
+		return protuto;
+	}
+
+	public void setProtuto(Produto protuto) {
+		this.protuto = protuto;
+	}
+
+	public Ilustracao getIlustracoes() {
+		return ilustracoes;
+	}
+
+	public void setIlustracoes(Ilustracao ilustracoes) {
+		this.ilustracoes = ilustracoes;
+	}
+
+	public Cultura getCultura() {
+		return cultura;
+	}
+
+	public void setCultura(Cultura cultura) {
+		this.cultura = cultura;
+	}
+
+	public Descricao getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(Descricao descricao) {
+		this.descricao = descricao;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public Modelo(long modeloId, String nome, String catalogoDescricao, String instrucao, Date dataModificacao,
+			Produto protuto, Ilustracao ilustracoes, Cultura cultura, Descricao descricao) {
+		super();
+		this.ModeloId = modeloId;
+		this.Nome = nome;
+		this.CatalogoDescricao = catalogoDescricao;
+		this.Instrucao = instrucao;
+		this.dataModificacao = dataModificacao;
+		this.protuto = protuto;
+		this.ilustracoes = ilustracoes;
+		this.cultura = cultura;
+		this.descricao = descricao;
+	}
+
+	@Override
+	public String toString() {
+		return "Modelo [ModeloId=" + ModeloId + ", Nome=" + Nome + ", CatalogoDescricao=" + CatalogoDescricao
+				+ ", Instrucao=" + Instrucao + ", dataModificacao=" + dataModificacao + ", protuto=" + protuto
+				+ ", ilustracoes=" + ilustracoes + ", cultura=" + cultura + ", descricao=" + descricao + "]";
+	}
+	
 
 }

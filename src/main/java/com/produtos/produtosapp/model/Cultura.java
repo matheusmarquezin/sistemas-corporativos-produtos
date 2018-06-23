@@ -5,44 +5,30 @@ import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
-import javax.persistence.OneToOne;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "cultura")
 public class Cultura implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	private long culturaId;
 	
 	private String nome;
 	
 	private Date dataCadastro;
+
+	public Cultura() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
-	@OneToOne
-	private DescricaoCultura descricaoculturaproduto;
-
 	
-	
-	public DescricaoCultura getDescricaoculturaproduto() {
-		return descricaoculturaproduto;
-	}
-
-	public void setDescricaoculturaproduto(DescricaoCultura descricaoculturaproduto) {
-		this.descricaoculturaproduto = descricaoculturaproduto;
-	}
-
-	public Date getDataCadastro() {
-		return dataCadastro;
-	}
-
-	public void setDataCadastro(Date dataCadastro) {
-		this.dataCadastro = dataCadastro;
-	}
 
 	public long getCulturaId() {
 		return culturaId;
@@ -59,5 +45,29 @@ public class Cultura implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	public Date getDataCadastro() {
+		return dataCadastro;
+	}
+
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public Cultura(long culturaId, String nome, Date dataCadastro) {
+		super();
+		this.culturaId = culturaId;
+		this.nome = nome;
+		this.dataCadastro = dataCadastro;
+	}
+
+	@Override
+	public String toString() {
+		return "Cultura [culturaId=" + culturaId + ", nome=" + nome + ", dataCadastro=" + dataCadastro + "]";
+	}	
 	
 }

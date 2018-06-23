@@ -1,23 +1,38 @@
 package com.produtos.produtosapp.model;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 
 @Entity
-public class Descricao {
+@Table(name = "descricao")
+public class Descricao implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	private long DescricaoProdutoId;	
 
 	private String Descricao;
 	
 	private Date dataCadastro;
+
+	public Descricao() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 
 	public long getDescricaoProdutoId() {
 		return DescricaoProdutoId;
@@ -26,8 +41,6 @@ public class Descricao {
 	public void setDescricaoProdutoId(long descricaoProdutoId) {
 		DescricaoProdutoId = descricaoProdutoId;
 	}
-
-	
 
 	public String getDescricao() {
 		return Descricao;
@@ -44,4 +57,23 @@ public class Descricao {
 	public void setDataCadastro(Date dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public Descricao(long descricaoProdutoId, String descricao, Date dataCadastro) {
+		super();
+		this.DescricaoProdutoId = descricaoProdutoId;
+		this.Descricao = descricao;
+		this.dataCadastro = dataCadastro;
+	}
+
+	@Override
+	public String toString() {
+		return "Descricao [DescricaoProdutoId=" + DescricaoProdutoId + ", Descricao=" + Descricao + ", dataCadastro="
+				+ dataCadastro + "]";
+	}
+	
+
 }

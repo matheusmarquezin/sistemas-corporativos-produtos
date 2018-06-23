@@ -1,19 +1,28 @@
 package com.produtos.produtosapp.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Documento {
+@Table(name = "documento")
+public class Documento implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	private long documentoId;
 	
 	private String nivelDocumento;
@@ -41,39 +50,102 @@ public class Documento {
 	private Date dataModificacao;
 	
 	@ManyToOne
-	private Produto produto;	
-	
-
-	public Produto getProduto() {
-		return produto;
-	}
-
-	public void setProduto(Produto produto) {
-		this.produto = produto;
-	}
+    @JoinColumn
+	private Produto produto;
 
 	public Documento() {
 		super();
-		dataModificacao = new Date();
+		// TODO Auto-generated constructor stub
+	}
+		
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + administrador;
+		result = prime * result + alterarNumero;
+		result = prime * result + ((dataModificacao == null) ? 0 : dataModificacao.hashCode());
+		result = prime * result + ((documento == null) ? 0 : documento.hashCode());
+		result = prime * result + (int) (documentoId ^ (documentoId >>> 32));
+		result = prime * result + ((extensaoArquivo == null) ? 0 : extensaoArquivo.hashCode());
+		result = prime * result + ((nivelDocumento == null) ? 0 : nivelDocumento.hashCode());
+		result = prime * result + ((nomeArquivo == null) ? 0 : nomeArquivo.hashCode());
+		result = prime * result + (pastaDocumento ? 1231 : 1237);
+		result = prime * result + ((produto == null) ? 0 : produto.hashCode());
+		result = prime * result + ((resumoDocumento == null) ? 0 : resumoDocumento.hashCode());
+		result = prime * result + ((revisaoArquivo == null) ? 0 : revisaoArquivo.hashCode());
+		result = prime * result + status;
+		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
+		return result;
 	}
 
-	public Documento(long documentoId, String nivelDocumento, String titulo, int administrador, boolean pastaDocumento,
-			String nomeArquivo, String extensaoArquivo, String revisaoArquivo, int alterarNumero, int status,
-			String resumoDocumento, String documento, Date dataModificacao) {
-		super();
-		this.documentoId = documentoId;
-		this.nivelDocumento = nivelDocumento;
-		this.titulo = titulo;
-		this.administrador = administrador;
-		this.pastaDocumento = pastaDocumento;
-		this.nomeArquivo = nomeArquivo;
-		this.extensaoArquivo = extensaoArquivo;
-		this.revisaoArquivo = revisaoArquivo;
-		this.alterarNumero = alterarNumero;
-		this.status = status;
-		this.resumoDocumento = resumoDocumento;
-		this.documento = documento;
-		this.dataModificacao = dataModificacao;
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Documento other = (Documento) obj;
+		if (administrador != other.administrador)
+			return false;
+		if (alterarNumero != other.alterarNumero)
+			return false;
+		if (dataModificacao == null) {
+			if (other.dataModificacao != null)
+				return false;
+		} else if (!dataModificacao.equals(other.dataModificacao))
+			return false;
+		if (documento == null) {
+			if (other.documento != null)
+				return false;
+		} else if (!documento.equals(other.documento))
+			return false;
+		if (documentoId != other.documentoId)
+			return false;
+		if (extensaoArquivo == null) {
+			if (other.extensaoArquivo != null)
+				return false;
+		} else if (!extensaoArquivo.equals(other.extensaoArquivo))
+			return false;
+		if (nivelDocumento == null) {
+			if (other.nivelDocumento != null)
+				return false;
+		} else if (!nivelDocumento.equals(other.nivelDocumento))
+			return false;
+		if (nomeArquivo == null) {
+			if (other.nomeArquivo != null)
+				return false;
+		} else if (!nomeArquivo.equals(other.nomeArquivo))
+			return false;
+		if (pastaDocumento != other.pastaDocumento)
+			return false;
+		if (produto == null) {
+			if (other.produto != null)
+				return false;
+		} else if (!produto.equals(other.produto))
+			return false;
+		if (resumoDocumento == null) {
+			if (other.resumoDocumento != null)
+				return false;
+		} else if (!resumoDocumento.equals(other.resumoDocumento))
+			return false;
+		if (revisaoArquivo == null) {
+			if (other.revisaoArquivo != null)
+				return false;
+		} else if (!revisaoArquivo.equals(other.revisaoArquivo))
+			return false;
+		if (status != other.status)
+			return false;
+		if (titulo == null) {
+			if (other.titulo != null)
+				return false;
+		} else if (!titulo.equals(other.titulo))
+			return false;
+		return true;
 	}
 
 	public long getDocumentoId() {
@@ -107,7 +179,6 @@ public class Documento {
 	public void setAdministrador(int administrador) {
 		this.administrador = administrador;
 	}
-
 	public boolean isPastaDocumento() {
 		return pastaDocumento;
 	}
@@ -180,4 +251,41 @@ public class Documento {
 		this.dataModificacao = dataModificacao;
 	}
 
+	public Produto getProduto() {
+		return produto;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
+
+	public Documento(long documentoId, String nivelDocumento, String titulo, int administrador, boolean pastaDocumento,
+			String nomeArquivo, String extensaoArquivo, String revisaoArquivo, int alterarNumero, int status,
+			String resumoDocumento, String documento, Date dataModificacao, Produto produto) {
+		super();
+		this.documentoId = documentoId;
+		this.nivelDocumento = nivelDocumento;
+		this.titulo = titulo;
+		this.administrador = administrador;
+		this.pastaDocumento = pastaDocumento;
+		this.nomeArquivo = nomeArquivo;
+		this.extensaoArquivo = extensaoArquivo;
+		this.revisaoArquivo = revisaoArquivo;
+		this.alterarNumero = alterarNumero;
+		this.status = status;
+		this.resumoDocumento = resumoDocumento;
+		this.documento = documento;
+		this.dataModificacao = dataModificacao;
+		this.produto = produto;
+	}
+
+	@Override
+	public String toString() {
+		return "Documento [documentoId=" + documentoId + ", nivelDocumento=" + nivelDocumento + ", titulo=" + titulo
+				+ ", administrador=" + administrador + ", pastaDocumento=" + pastaDocumento + ", nomeArquivo="
+				+ nomeArquivo + ", extensaoArquivo=" + extensaoArquivo + ", revisaoArquivo=" + revisaoArquivo
+				+ ", alterarNumero=" + alterarNumero + ", status=" + status + ", resumoDocumento=" + resumoDocumento
+				+ ", documento=" + documento + ", dataModificacao=" + dataModificacao + ", produto=" + produto + "]";
+	}	
+	
 }
