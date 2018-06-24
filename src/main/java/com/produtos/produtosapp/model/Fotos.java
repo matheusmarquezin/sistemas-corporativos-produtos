@@ -38,8 +38,7 @@ public class Fotos implements Serializable {
 	@NotNull
 	private Date dataModificacao;
 	
-	@ManyToOne
-    @JoinColumn
+	@ManyToOne   
 	private Produto produto;	
 	
 

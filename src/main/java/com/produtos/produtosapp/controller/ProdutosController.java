@@ -1,8 +1,9 @@
 package com.produtos.produtosapp.controller;
 
-public class ProdutosController {
-	
-	
+import org.springframework.data.rest.webmvc.RepositoryRestController;
+
+@RepositoryRestController
+public class ProdutosController {	
 	
 
 }
