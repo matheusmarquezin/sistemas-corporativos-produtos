@@ -5,10 +5,11 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
+import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -36,16 +37,19 @@ public class Modelo implements Serializable {
 	@NotNull
 	private Date dataModificacao;	
 	
-	//@OneToMany
+	//@OneToOne
+	@Lob
+	@Column(length=1000000)
 	private Produto protuto;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	//@OneToOne(cascade = CascadeType.ALL)
 	private Ilustracao ilustracoes;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	
+	//@OneToOne(cascade = CascadeType.ALL)
 	private Cultura cultura;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	//@OneToOne(cascade = CascadeType.ALL)
 	private Descricao descricao;
 
 	public Modelo() {

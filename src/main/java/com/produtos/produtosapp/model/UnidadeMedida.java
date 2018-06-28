@@ -25,8 +25,8 @@ public class UnidadeMedida implements Serializable{
 	private String nome;
 	
 	private Date dataModificacao;
-	@OneToOne
-	private Produto produto;
+//	@OneToOne
+//	private Produto produto;
 
 	public UnidadeMedida() {
 		super();
@@ -40,7 +40,7 @@ public class UnidadeMedida implements Serializable{
 		result = prime * result + (int) (unidadeMedidaId ^ (unidadeMedidaId >>> 32));
 		result = prime * result + ((dataModificacao == null) ? 0 : dataModificacao.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + ((produto == null) ? 0 : produto.hashCode());
+		//result = prime * result + ((produto == null) ? 0 : produto.hashCode());
 		return result;
 	}
 
@@ -65,11 +65,11 @@ public class UnidadeMedida implements Serializable{
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
-		if (produto == null) {
-			if (other.produto != null)
-				return false;
-		} else if (!produto.equals(other.produto))
-			return false;
+//		if (produto == null) {
+//			if (other.produto != null)
+//				return false;
+//		} else if (!produto.equals(other.produto))
+//			return false;
 		return true;
 	}
 
@@ -97,13 +97,13 @@ public class UnidadeMedida implements Serializable{
 		this.dataModificacao = dataModificacao;
 	}
 
-	public Produto getProduto() {
-		return produto;
-	}
-
-	public void setProduto(Produto produto) {
-		this.produto = produto;
-	}
+//	public Produto getProduto() {
+//		return produto;
+//	}
+//
+//	public void setProduto(Produto produto) {
+//		this.produto = produto;
+//	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
@@ -114,13 +114,12 @@ public class UnidadeMedida implements Serializable{
 		unidadeMedidaId = id;
 		this.nome = nome;
 		this.dataModificacao = dataModificacao;
-		this.produto = produto;
+		//this.produto = produto;
 	}
 
 	@Override
 	public String toString() {
-		return "UnidadeMedida [Id=" + unidadeMedidaId + ", nome=" + nome + ", dataModificacao=" + dataModificacao + ", produto="
-				+ produto + "]";
+		return "UnidadeMedida [Id=" + unidadeMedidaId + ", nome=" + nome + ", dataModificacao=" + dataModificacao + "]";
 	}
 	
 }

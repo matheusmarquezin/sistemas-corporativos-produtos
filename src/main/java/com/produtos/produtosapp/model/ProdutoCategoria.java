@@ -22,8 +22,8 @@ public class ProdutoCategoria {
 		private String nome;
 		@NotNull
 		private Date dataModificacao;
-		@OneToOne
-		private ProdutoSubCategoria  produtoSubCategoria;
+//		@OneToOne
+//		private ProdutoSubCategoria  produtoSubCategoria;
 		
 		
 		
@@ -40,7 +40,7 @@ public class ProdutoCategoria {
 			result = prime * result + (int) (ProdutoCategoriaID ^ (ProdutoCategoriaID >>> 32));
 			result = prime * result + ((dataModificacao == null) ? 0 : dataModificacao.hashCode());
 			result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-			result = prime * result + ((produtoSubCategoria == null) ? 0 : produtoSubCategoria.hashCode());
+			//result = prime * result + ((produtoSubCategoria == null) ? 0 : produtoSubCategoria.hashCode());
 			return result;
 		}
 
@@ -67,11 +67,11 @@ public class ProdutoCategoria {
 					return false;
 			} else if (!nome.equals(other.nome))
 				return false;
-			if (produtoSubCategoria == null) {
-				if (other.produtoSubCategoria != null)
-					return false;
-			} else if (!produtoSubCategoria.equals(other.produtoSubCategoria))
-				return false;
+//			if (produtoSubCategoria == null) {
+//				if (other.produtoSubCategoria != null)
+//					return false;
+//			} else if (!produtoSubCategoria.equals(other.produtoSubCategoria))
+//				return false;
 			return true;
 		}
 
@@ -103,14 +103,14 @@ public class ProdutoCategoria {
 			this.dataModificacao = dataModificacao;
 		}
 
-		public ProdutoSubCategoria getProdutoSubCategoria() {
-			return produtoSubCategoria;
-		}
-
-
-		public void setProdutoSubCategoria(ProdutoSubCategoria produtoSubCategoria) {
-			this.produtoSubCategoria = produtoSubCategoria;
-		}
+//		public ProdutoSubCategoria getProdutoSubCategoria() {
+//			return produtoSubCategoria;
+//		}
+//
+//
+//		public void setProdutoSubCategoria(ProdutoSubCategoria produtoSubCategoria) {
+//			this.produtoSubCategoria = produtoSubCategoria;
+//		}
 
 		public ProdutoCategoria(long produtoCategoriaID, String nome, Date dataModificacao,
 				ProdutoSubCategoria produtoSubCategoria) {
@@ -118,13 +118,13 @@ public class ProdutoCategoria {
 			ProdutoCategoriaID = produtoCategoriaID;
 			this.nome = nome;
 			this.dataModificacao = dataModificacao;
-			this.produtoSubCategoria = produtoSubCategoria;
+			//this.produtoSubCategoria = produtoSubCategoria;
 		}
 
 		@Override
 		public String toString() {
 			return "ProdutoCategoria [ProdutoCategoriaID=" + ProdutoCategoriaID + ", nome=" + nome
-					+ ", dataModificacao=" + dataModificacao + ", produtoSubCategoria=" + produtoSubCategoria + "]";
+					+ ", dataModificacao=" + dataModificacao + " ]";
 		}	
 		
 			
