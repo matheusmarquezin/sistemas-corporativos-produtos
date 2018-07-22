@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import com.produtos.produtosapp.model.Produto;
+import com.produtos.produtosapp.model.ProdutoExterno;
 import com.produtos.produtosapp.repository.CulturaRepository;
 import com.produtos.produtosapp.repository.DescricaoRepository;
 import com.produtos.produtosapp.repository.DocumentoRepository;
@@ -24,6 +25,7 @@ import com.produtos.produtosapp.repository.FotoRepository;
 import com.produtos.produtosapp.repository.IlustracaoRepository;
 import com.produtos.produtosapp.repository.ModeloRepository;
 import com.produtos.produtosapp.repository.ProdutoCategoriaRepository;
+import com.produtos.produtosapp.repository.ProdutoExternoRepository;
 import com.produtos.produtosapp.repository.ProdutoRepository;
 import com.produtos.produtosapp.repository.ProdutoSubCategoriaRepository;
 import com.produtos.produtosapp.repository.RevisaoRepository;
@@ -55,54 +57,64 @@ public class ProdutoServices {
 	DescricaoRepository DescricaoRepositorio;
 	@Autowired
 	CulturaRepository CulturaRepositorio;
+	@Autowired
+	ProdutoExternoRepository ProdutoExternoRepositirio;
 	
-	
-	
-	@GetMapping(value="/{Id}", produces="application/json")
-	public @ResponseBody Produto produto(@PathVariable(value="Id") long Id)
+	public Iterable<Produto>listarProdutos()
 	{
-		Produto cliente = ProdutoRepositorio.findOne(Id);
-		return cliente;
+		return ProdutoRepositorio.findAll();
 	}
 	
-	@GetMapping
-	public @ResponseBody Iterable<Produto> listaProdutos()
+	public Iterable<ProdutoExterno>listarProdutoExterno()
 	{
-		Iterable<Produto> listaProdutos = ProdutoRepositorio.findAll();
-		return listaProdutos;
-		
-	}
-	@PostMapping
-	public String cadastrarCliente(@RequestBody @Valid Produto produto)
-	{
-//		for(Documento contato: produto.ge)
-//	{			contatoR.save(contato);
-//		}
-//		for(Fotos endereco: produto.getEndereco())
-//		{
-//			er.save(endereco);
-//		}
-//			
-//		contatoR.flush();
-//		er.flush();	
-		Date data = new Date(System.currentTimeMillis());
-		produto.setDataDisponivelVenda(data);
-		produto.setDataNaoDisponivelVenda(data);
-		produto.setDataProdutoDescontinuado(data);
-		
-		ProdutoRepositorio.save(produto);
-		
-		return "OK";
-		
-		
-	}
-	@DeleteMapping(value="/{Id}", produces="application/json")
-	public @ResponseBody String deletarProduto(@PathVariable(value="Id") long Id)
-	{
-		Produto cliente = ProdutoRepositorio.findOne(Id);
-		ProdutoRepositorio.delete(cliente);
-		return "OK";
+		return ProdutoExternoRepositirio.findAll();
 	}
 	
+//	@GetMapping(value="/{Id}", produces="application/json")
+//	public @ResponseBody Produto produto(@PathVariable(value="Id") long Id)
+//	{
+//		Produto cliente = ProdutoRepositorio.findOne(Id);
+//		return cliente;
+//	}
+//	
+//	@GetMapping
+//	public @ResponseBody Iterable<Produto> listaProdutos()
+//	{
+//		Iterable<Produto> listaProdutos = ProdutoRepositorio.findAll();
+//		return listaProdutos;
+//		
+//	}
+//	@PostMapping
+//	public String cadastrarCliente(@RequestBody @Valid Produto produto)
+//	{
+////		for(Documento contato: produto.ge)
+////	{			contatoR.save(contato);
+////		}
+////		for(Fotos endereco: produto.getEndereco())
+////		{
+////			er.save(endereco);
+////		}
+////			
+////		contatoR.flush();
+////		er.flush();	
+//		Date data = new Date(System.currentTimeMillis());
+//		produto.setDataDisponivelVenda(data);
+//		produto.setDataNaoDisponivelVenda(data);
+//		produto.setDataProdutoDescontinuado(data);
+//		
+//		ProdutoRepositorio.save(produto);
+//		
+//		return "OK";
+//		
+//		
+//	}
+//	@DeleteMapping(value="/{Id}", produces="application/json")
+//	public @ResponseBody String deletarProduto(@PathVariable(value="Id") long Id)
+//	{
+//		Produto cliente = ProdutoRepositorio.findOne(Id);
+//		ProdutoRepositorio.delete(cliente);
+//		return "OK";
+//	}
+//	
 
 }

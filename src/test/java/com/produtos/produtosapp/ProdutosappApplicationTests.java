@@ -63,8 +63,7 @@ public class ProdutosappApplicationTests {
 	
 
 	@Test
-	public void ProdutoCreate() {
-		
+	public void ProdutoCreate() {		
 		
 
 		Produto produto = new Produto();
